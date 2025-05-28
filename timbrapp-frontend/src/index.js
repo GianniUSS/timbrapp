@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import { initDB } from './services/indexedDBService';
 import { FilterProvider } from './context/FilterContext';
 
-// Inizializza il database IndexedDB
+// Inizializza il database IndexedDB porva
 initDB()
   .then(() => console.log('IndexedDB inizializzato con successo'))
   .catch(err => console.error('Errore inizializzazione IndexedDB:', err));
