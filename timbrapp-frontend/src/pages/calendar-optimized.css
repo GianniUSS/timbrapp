@@ -1,0 +1,187 @@
+/* 
+ * calendar-optimized.css
+ * File CSS ottimizzato per react-big-calendar in TimbrApp
+ * Consolidato da:
+ * calendar-custom, calendar-visual-fix, calendar-fix-vertical-lines, 
+ * calendar-fix-final, calendar-day-fix, calendar-grid-fix
+ */
+
+/* ===== IMPOSTAZIONI GENERALI ===== */
+.rbc-calendar {
+  min-height: auto !important;
+  background-color: white !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif !important;
+  contain: strict !important; /* Migliora le performance */
+}
+
+.rbc-calendar *,
+.rbc-calendar *::before,
+.rbc-calendar *::after {
+  box-sizing: border-box !important;
+}
+
+/* ===== VISTA MESE ===== */
+.rbc-month-view {
+  height: auto !important;
+  flex: 1 1 auto !important;
+  border: 1px solid #ccc !important;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%) !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-spacing: 0 !important;
+  isolation: isolate !important;
+}
+
+/* ===== INTESTAZIONE E GIORNI SETTIMANA ===== */
+.rbc-month-header {
+  border-bottom: 1px solid #ccc !important;
+  background: linear-gradient(180deg, #f7f7f7 0%, #f0f0f0 100%) !important;
+  padding: 4px 0 !important;
+}
+
+.rbc-header {
+  border-right: 1px solid #ccc !important;
+  background: transparent !important;
+  font-weight: 600 !important;
+  color: #33466b !important;
+  font-size: 14px !important;
+  letter-spacing: 0.4px !important;
+  padding: 8px 0 !important;
+  text-align: center !important;
+}
+
+.rbc-header:last-child {
+  border-right: none !important;
+}
+
+/* ===== CELLE GIORNI ===== */
+.rbc-month-row, 
+.rbc-row-bg {
+  border-bottom: 1px solid #ccc !important;
+}
+
+.rbc-day-bg {
+  border-right: 1px solid #ccc !important;
+  background: #fff !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.rbc-day-bg:hover {
+  background: #fafafa !important;
+}
+
+.rbc-day-bg:last-child {
+  border-right: none !important;
+}
+
+.rbc-off-range-bg {
+  background: #f8f8f8 !important;
+}
+
+.rbc-date-cell {
+  text-align: right !important;
+  padding: 4px 8px 0 0 !important;
+  font-size: 12px !important;
+  color: #666 !important;
+  font-weight: 500 !important;
+}
+
+.rbc-today {
+  background: #e3f0fa !important;
+  border: 2px solid #1976d2 !important;
+}
+
+/* Stile personalizzato per le celle del giorno */
+.custom-date-cell {
+  height: 100% !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+.custom-date-cell .day-number {
+  text-align: right !important;
+  padding: 2px 4px !important;
+  font-weight: 500 !important;
+}
+
+/* ===== EVENTI ===== */
+.rbc-event {
+  background-color: #2986cc !important;
+  border: 1px solid #1976d2 !important;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%) !important;
+  border-radius: 3px !important;
+  color: white !important;
+  padding: 0 !important;
+  margin: 1px !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+
+.rbc-event:hover {
+  box-shadow: 0 2px 5px rgb(0 0 0 / 20%) !important;
+  filter: brightness(1.05) !important;
+  z-index: 100 !important;
+}
+
+.rbc-event-content {
+  width: 100% !important;
+  height: 100% !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+.rbc-event-label {
+  display: none !important;
+}
+
+.rbc-selected {
+  outline: 2px solid #1976d2 !important;
+  z-index: 101 !important;
+}
+
+/* ===== VISTA SETTIMANA/GIORNO ===== */
+.rbc-time-header, 
+.rbc-timeslot-group {
+  border-bottom: 1px solid #ccc !important;
+}
+
+.rbc-time-header-cell, 
+.rbc-time-header-content, 
+.rbc-timeslot-group {
+  border-right: 1px solid #ccc !important;
+}
+
+.rbc-time-header-cell:last-child, 
+.rbc-timeslot-group:last-child {
+  border-right: none !important;
+}
+
+/* ===== ALTRE OTTIMIZZAZIONI ===== */
+
+/* Per layout responsive */
+@media (width <= 768px) {
+  .rbc-header {
+    font-size: 13px !important;
+    padding: 6px 0 !important;
+  }
+  
+  .rbc-date-cell {
+    font-size: 12px !important;
+    padding: 6px 8px 0 0 !important;
+  }
+}
+
+/* Fix per Firefox */
+@-moz-document url-prefix() {
+  .rbc-event-content {
+    line-height: normal !important;
+  }
+}

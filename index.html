@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Pannello laterale con TreeView -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Logo">
+                <h2>TimbrApp</h2>
+            </div>
+            <div class="tree-container">
+                <ul class="tree-view">
+                    <li class="tree-item">
+                        <div class="tree-item-header">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </div>
+                    </li>
+                    <li class="tree-item">
+                        <div class="tree-item-header">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Statistiche</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                        <ul class="nested">
+                            <li>Report Giornalieri</li>
+                            <li>Report Mensili</li>
+                            <li>Grafici</li>
+                        </ul>
+                    </li>
+                    <li class="tree-item">
+                        <div class="tree-item-header">
+                            <i class="fas fa-cog"></i>
+                            <span>Impostazioni</span>
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                        </div>
+                        <ul class="nested">
+                            <li>Profilo</li>
+                            <li>Preferenze</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Contenuto principale -->
+        <div class="main-content">
+            <!-- Header con hamburger menu a destra -->
+            <header>
+                <h1>Dashboard</h1>
+                <div class="hamburger-menu">
+                    <button class="menu-button">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li><a href="#"><i class="fas fa-user"></i> Profilo</a></li>
+                            <li><a href="#"><i class="fas fa-bell"></i> Notifiche</a></li>
+                            <li><a href="#"><i class="fas fa-cog"></i> Impostazioni</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Area contenuto -->
+            <div class="content-area">
+                <div class="card">
+                    <h2>Benvenuto nella dashboard</h2>
+                    <p>Utilizza il menu laterale per navigare tra le funzionalità.</p>
+                </div>
+                <div class="dashboard-widgets">
+                    <div class="widget">
+                        <h3>Attività recenti</h3>
+                        <p>Nessuna attività recente.</p>
+                    </div>
+                    <div class="widget">
+                        <h3>Statistiche</h3>
+                        <p>Caricamento in corso...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

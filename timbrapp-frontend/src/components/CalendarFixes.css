@@ -1,0 +1,53 @@
+/* Fix per forzare le proprietà corrette nel viewport mobile e prevenire overflow */
+@media screen {
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Fix per il container del calendario in viewport small */
+  .react-big-calendar-container {
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Garantisce che la larghezza delle colonne sia proporzionale */
+  .rbc-month-row, 
+  .rbc-row-content, 
+  .rbc-row-bg {
+    min-width: 0 !important;
+  }
+  
+  /* Fix per viewport mobile */
+  @media (max-width: 600px) {
+    .rbc-btn-group button {
+      padding: 4px !important;
+      font-size: 0.8rem !important;
+    }
+    
+    .rbc-toolbar {
+      flex-direction: column !important;
+      align-items: stretch !important;
+    }
+    
+    .rbc-toolbar-label {
+      margin: 8px 0 !important;
+    }
+    
+    .rbc-month-view {
+      min-width: 0 !important;
+    }
+    
+    .rbc-header {
+      font-size: 0.7rem !important;
+      padding: 2px !important;
+    }
+    
+    .rbc-date-cell {
+      font-size: 0.7rem !important;
+    }
+  }
+}

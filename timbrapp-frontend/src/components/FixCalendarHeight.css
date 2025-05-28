@@ -1,0 +1,72 @@
+/*
+ * FixCalendarHeight.css - Correzione specifica per il problema di visualizzazione
+ * Problema: Il calendario è visibile solo quando si apre la console sviluppatore (F12)
+ * Causa: Problema di calcolo dell'altezza del calendario
+ */
+
+/* Assicura che ogni contenitore padre abbia un'altezza esplicita */
+html, body, #root {
+  height: 100%;
+}
+
+/* Imposta dimensioni esplicite per il calendario e il suo contenitore */
+.calendar-container {
+  height: 700px !important;
+  min-height: 600px !important;
+  display: flex !important;
+}
+
+.rbc-calendar {
+  flex: 1 !important;
+  height: 100% !important;
+}
+
+/* Forza il rendering hardware-accelerated per creare un contesto di stack separato */
+.rbc-calendar {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  will-change: transform;
+}
+
+/* Assicura che ogni vista del calendario abbia un'altezza esplicita */
+.rbc-month-view, .rbc-time-view, .rbc-agenda-view {
+  height: 100% !important;
+}
+
+/* Forza il corretto dimensionamento delle righe */
+.rbc-month-view .rbc-month-row {
+  flex: 1 0 0 !important;
+}
+
+/* Forza il display flex sulle righe più interne */
+.rbc-row, .rbc-month-row {
+  display: flex !important;
+}
+
+/* Aggiungi regola specifica per risolvere il problema di altezza zero sulle celle */
+.rbc-row-bg, .rbc-row-content {
+  height: 100% !important;
+}
+
+/* Assicura che il contenuto delle celle sia visibile */
+.rbc-day-bg, .rbc-date-cell {
+  min-height: 20px !important;
+}
+
+/* Forza il posizionamento corretto delle celle */
+.rbc-date-cell > a {
+  display: block !important;
+}
+
+/* Forza la visualizzazione degli eventi */
+.rbc-event {
+  position: relative !important;
+  display: block !important;
+}
+
+/* Forza la visualizzazione dell'header del calendario */
+.rbc-header {
+  min-height: 30px !important;
+  box-sizing: border-box !important;
+}

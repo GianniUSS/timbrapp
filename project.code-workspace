@@ -1,0 +1,25 @@
+{
+    "folders": [
+        {
+            "path": "src"
+        },
+        {
+            "path": "public"
+        },
+        {
+            "path": "docs"
+        },
+        {
+            "path": "tests"
+        }
+    ],
+    "settings": {
+        "explorer.compactFolders": false,
+        "files.exclude": {
+            "**/node_modules": true,
+            "**/.git": true
+        },
+        "files.autoSave": "afterDelay",
+        "editor.formatOnSave": true
+    }
+}

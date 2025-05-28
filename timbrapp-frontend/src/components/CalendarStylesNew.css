@@ -1,0 +1,94 @@
+/**
+ * CalendarStylesNew.css - Soluzione basata sulla documentazione ufficiale di react-big-calendar
+ * https://github.com/jquense/react-big-calendar
+ */
+
+/* 
+ * Importazione degli stili base di react-big-calendar
+ * Questo è fondamentale e deve essere presente
+ */
+@import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+/*
+ * Dimensionamento container principale del calendario
+ * Le altezze devono essere specificate in modo esplicito
+ */
+.rbc-calendar {
+  min-height: 600px !important;
+  height: calc(100vh - 200px) !important;
+}
+
+/*
+ * Garantire che il contenitore principale abbia una dimensione corretta
+ * Questo è essenziale per il rendering del calendario
+ */
+.calendar-container {
+  height: 100% !important;
+  min-height: 600px !important;
+  width: 100% !important;
+  position: relative !important;
+  display: flex !important;
+}
+
+/* 
+ * Risolve problemi di overflow e dimensionamento
+ * Fondamentale per il corretto rendering della griglia del calendario
+ */
+.rbc-month-view,
+.rbc-time-view,
+.rbc-agenda-view {
+  height: 100% !important;
+  min-height: 600px !important;
+  overflow: visible !important;
+  flex: 1 !important;
+}
+
+/*
+ * Gestione corretta della visualizzazione delle celle
+ */
+.rbc-month-row {
+  min-height: 80px !important;
+  overflow: visible !important;
+}
+
+/*
+ * Fix per il corretto rendering degli eventi
+ */
+.rbc-event {
+  min-height: 20px !important;
+}
+
+/*
+ * Ridefinizione del layout box model per tutti gli elementi
+ * Questo è critico per evitare problemi di collasso o dimensionamento imprevisto
+ */
+.rbc-calendar *,
+.rbc-calendar *:before,
+.rbc-calendar *:after {
+  box-sizing: inherit !important;
+}
+
+/*
+ * Riparazione per l'header del calendario
+ */
+.rbc-header {
+  min-height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/*
+ * Forzatura del rendering tramite stacking context per tutte le parti del calendario
+ * Questo simula ciò che fa l'apertura della console sviluppatore
+ */
+.rbc-calendar,
+.rbc-month-view,
+.rbc-month-row,
+.rbc-date-cell,
+.rbc-row-bg,
+.rbc-row-content {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}

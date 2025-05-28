@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "selector-pseudo-element-colon-notation": "double",
+    "color-function-notation": "legacy",
+    "alpha-value-notation": "number",
+    "comment-empty-line-before": null,
+    "media-feature-range-notation": "prefix",
+    "at-rule-no-vendor-prefix": null,
+    "no-eol-whitespace": null
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "npm: start - timbrapp-frontend",
+      "type": "shell",
+      "command": "cd timbrapp-frontend ; npm start",
+      "group": "build",
+      "problemMatcher": [],
+      "isBackground": true
+    }
+  ]
+}

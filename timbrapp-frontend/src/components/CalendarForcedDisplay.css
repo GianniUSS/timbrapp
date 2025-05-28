@@ -1,0 +1,73 @@
+/* Regole forzate per garantire la visibilità del calendario */
+
+/* Reset globale */
+.calendar-force-visible {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Forzare la visibilità del calendario in tutte le condizioni */
+.rbc-calendar {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 600px !important;
+  height: 700px !important;
+  position: relative !important;
+  z-index: 999 !important;
+}
+
+/* Garantisce che il calendario sia sempre visibile */
+.rbc-calendar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Corregge il problema di stacking context */
+.calendar-container {
+  position: relative !important;
+  z-index: 100 !important;
+  min-height: 600px !important;
+  height: 700px !important;
+}
+
+/* Forza la visualizzazione di tutti i componenti del calendario */
+.rbc-toolbar,
+.rbc-month-view,
+.rbc-time-view,
+.rbc-agenda-view {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Colori di debug per evidenziare i componenti (da rimuovere in produzione) */
+.rbc-toolbar {
+  background-color: rgba(255, 255, 255, 1) !important;
+}
+
+.rbc-month-view {
+  background-color: rgba(255, 255, 255, 1) !important;
+}
+
+/* Aumenta il contrasto dei testi */
+.rbc-header span,
+.rbc-date-cell {
+  color: #000 !important;
+  font-weight: bold !important;
+}
+
+/* Ripristina z-index danneggiati */
+.MuiBox-root, .MuiPaper-root {
+  z-index: auto !important;
+}

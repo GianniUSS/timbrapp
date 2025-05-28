@@ -1,0 +1,125 @@
+/* Calendar.css - Fix per i problemi di layout del calendario */
+
+/* Reset completo per il calendario */
+.react-big-calendar-container {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 600px !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+/* Corregge overflow nei contenitori padre */
+.calendar-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* Rende il calendario responsive */
+.rbc-calendar {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 600px !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Assicura che le viste abbiano la giusta larghezza */
+.rbc-month-view,
+.rbc-time-view,
+.rbc-agenda-view {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Corregge la visualizzazione di righe e colonne in modalità mese */
+.rbc-month-header {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+}
+
+.rbc-month-header .rbc-header {
+  flex: 1 0 auto !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  padding: 5px !important;
+  font-weight: bold !important;
+}
+
+.rbc-month-view .rbc-month-row {
+  display: flex !important;
+  flex-direction: row !important;
+  flex: 1 0 auto !important;
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+.rbc-row-bg {
+  display: flex !important;
+  flex-direction: row !important;
+  flex: 1 0 auto !important;
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+.rbc-day-bg {
+  flex: 1 0 0% !important;
+}
+
+.rbc-row-content {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+}
+
+.rbc-row {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+}
+
+.rbc-date-cell {
+  flex: 1 0 0% !important;
+  min-width: 0 !important;
+  padding-right: 5px !important;
+  text-align: right !important;
+}
+
+/* Fix per visualizzazione eventi */
+.rbc-event {
+  background-color: #3174ad !important;
+  color: white !important;
+  border-radius: 4px !important;
+  padding: 2px 5px !important;
+  font-size: 0.85em !important;
+  cursor: pointer !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* Assicura che le celle abbiano un minimo di spazio */
+@media screen and (max-width: 768px) {
+  .rbc-month-view .rbc-header,
+  .rbc-month-view .rbc-date-cell {
+    padding: 2px !important;
+    font-size: 0.8em !important;
+  }
+  
+  .rbc-event {
+    padding: 1px 2px !important;
+    font-size: 0.7em !important;
+  }
+}

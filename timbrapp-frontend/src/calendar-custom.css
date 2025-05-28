@@ -1,0 +1,21 @@
+/* Celle quadrate nel month view di react-big-calendar */
+.rbc-month-view .rbc-date-cell {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Migliora la visualizzazione degli eventi nelle celle */
+.rbc-month-view .rbc-date-cell > .rbc-day-bg,
+.rbc-month-view .rbc-date-cell > .rbc-events {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Opzionale: bordo più chiaro per le celle */
+.rbc-month-view .rbc-date-cell {
+  border-right: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}

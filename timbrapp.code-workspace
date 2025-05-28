@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "explorer.compactFolders": false,
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.git": true
+    },
+    "files.autoSave": "afterDelay",
+    "editor.formatOnSave": true,
+    "cSpell.words": ["precaching", "reqs"]
+  }
+}

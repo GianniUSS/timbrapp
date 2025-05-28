@@ -1,0 +1,2 @@
+Rimuovere i seguenti file inutilizzati:
+- src/utils/SundayColumnFix.js

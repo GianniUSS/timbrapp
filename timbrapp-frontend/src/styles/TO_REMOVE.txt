@@ -1,0 +1,7 @@
+Rimuovere i seguenti file inutilizzati:
+- src/utils/SundayColumnFix.js
+- src/styles/SundayColumnFix.css
+- src/styles/calendar-custom.css
+- src/styles/calendar-additional.css
+- src/styles/calendar-improvements.css
+- src/styles/day-cell.css

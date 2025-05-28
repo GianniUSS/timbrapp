@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Spinner loading keyframes e classe */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #1976d2;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Fix per problemi di visualizzazione del calendario */
+.react-big-calendar-container {
+  display: flex !important;
+  visibility: visible !important;
+  min-height: 500px !important;
+  height: calc(100vh - 200px) !important;
+  max-height: calc(100vh - 150px) !important;
+  opacity: 1 !important;
+  background-color: #ffffff !important;
+  position: relative !important;
+  z-index: 100 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+
+.rbc-calendar {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 500px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  max-width: 100% !important;
+}
+
+/* Forza la visualizzazione degli elementi del calendario */
+.rbc-month-view,
+.rbc-time-view,
+.rbc-agenda-view {
+  display: flex !important;
+  flex-direction: column !important;
+  visibility: visible !important;
+  height: auto !important;
+  min-height: 450px !important;
+  flex: 1 !important;
+  position: relative !important;
+  z-index: 90 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+
+.rbc-month-row,
+.rbc-time-content,
+.rbc-agenda-content,
+.rbc-month-header,
+.rbc-time-header,
+.rbc-agenda-header,
+.rbc-day-bg,
+.rbc-events-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Classe applicata al body per garantire la visibilità del calendario */
+.calendar-visible {
+  overflow: visible !important;
+}
+
+/* Assicura che tutti i contenitori padre abbiano overflow visibile */
+body .calendar-container,
+body [role="main"],
+body [class*="MuiBox-root"],
+body [class*="MuiPaper-root"] {
+  overflow: visible !important;
+}
+
+/* Assicura che il contenitore principale abbia sufficiente altezza */
+.calendar-container {
+  min-height: 600px !important;
+  height: calc(100vh - 100px) !important;
+  overflow: visible !important;
+  display: flex !important;
+  visibility: visible !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Fix per tabelle e righe calendario */
+.rbc-row-content {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Fix per scroll orizzontale nelle celle */
+.rbc-month-row, .rbc-row {
+  display: flex !important;
+  flex: 1 0 auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Assicurarsi che le celle abbiano larghezza corretta */
+.rbc-month-view .rbc-month-row .rbc-row-content .rbc-row .rbc-date-cell {
+  flex: 1 !important;
+  max-width: none !important;
+}

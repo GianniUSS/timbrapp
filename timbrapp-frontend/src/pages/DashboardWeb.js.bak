@@ -1,0 +1,503 @@
+import React, { useMemo, useState } from 'react';
+import moment from 'moment';
+import 'moment/locale/it';
+import {
+  Calendar,
+  Views,
+  momentLocalizer,
+} from 'react-big-calendar';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import './calendar-custom.css'; // Importo CSS personalizzato
+import './TimbrAppCalendarContainer.css'; // Importo CSS per il container
+
+// Configurazione di moment in italiano
+moment.locale('it');
+const localizer = momentLocalizer(moment);
+
+// Componente per la cella del giorno
+const CustomDateCell = ({ value, children }) => {
+  const today = moment().startOf('day');
+  const date = moment(value).startOf('day');
+  const isToday = date.isSame(today);
+  
+  return (
+    <div className={`rbc-date-cell ${isToday ? 'rbc-now' : ''}`}>
+      {isToday ? (
+        <span className="rbc-button-link" style={{
+          display: 'inline-flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '22px',
+          height: '22px',
+          borderRadius: '50%',
+          backgroundColor: '#2986cc',
+          color: 'white',
+          fontSize: '0.8rem',
+          fontWeight: 'normal',
+          marginTop: '1px'
+        }}>
+          {date.format('D')}
+        </span>
+      ) : (
+        <span style={{ fontSize: '0.8rem', color: '#555' }}>{date.format('D')}</span>
+      )}
+    </div>
+  );
+};
+
+// Eventi di esempio simili al secondo screenshot
+const events = [
+  {
+    id: 1,
+    title: 'Long Event',
+    start: new Date(2015, 3, 7, 0, 0),
+    end: new Date(2015, 3, 10, 0, 0),
+    allDay: true,
+  },
+  {
+    id: 2,
+    title: 'Some Other Event',
+    start: new Date(2015, 3, 8, 9, 0),
+    end: new Date(2015, 3, 10, 17, 0),
+    allDay: true,
+  },
+  {
+    id: 3,
+    title: 'Some Event',
+    start: new Date(2015, 3, 9, 10, 0),
+    end: new Date(2015, 3, 9, 12, 0),
+    allDay: true,
+  },
+  {
+    id: 4,
+    title: 'Conference',
+    start: new Date(2015, 3, 11, 9, 0),
+    end: new Date(2015, 3, 11, 17, 0),
+    allDay: true,
+  },
+  {
+    id: 5,
+    title: 'Conference',
+    start: new Date(2015, 3, 12, 9, 0),
+    end: new Date(2015, 3, 12, 17, 0),
+    allDay: true,
+  },
+  {
+    id: 6,
+    title: 'Meeting',
+    start: new Date(2015, 3, 12, 10, 30),
+    end: new Date(2015, 3, 12, 12, 30),
+    allDay: true,
+  },
+  {
+    id: 7,
+    title: 'Planning Meeting',
+    start: new Date(2015, 3, 13, 10, 30),
+    end: new Date(2015, 3, 13, 14, 30),
+    allDay: true,
+  },
+  {
+    id: 8,
+    title: 'Inconvenient Conference Call',
+    start: new Date(2015, 3, 13, 9, 30),
+    end: new Date(2015, 3, 13, 12, 0),
+    allDay: true,
+  },
+  {
+    id: 9,
+    title: 'Video Record',
+    start: new Date(2015, 3, 14, 8, 30),
+    end: new Date(2015, 3, 14, 12, 0),
+    allDay: true,
+  },
+  {
+    id: 10,
+    title: 'Itaewon Meeting',
+    start: new Date(2015, 3, 14, 14, 0),
+    end: new Date(2015, 3, 14, 16, 0),
+    allDay: true,
+  },
+  {
+    id: 11,
+    title: 'Late Same Night Event',
+    start: new Date(2015, 3, 17, 19, 30),
+    end: new Date(2015, 3, 17, 23, 30),
+    allDay: true,
+  },
+  {
+    id: 12,
+    title: 'Late Night Event',
+    start: new Date(2015, 3, 17, 9, 30),
+    end: new Date(2015, 3, 17, 23, 30),
+    allDay: true,
+  },
+  {
+    id: 13,
+    title: 'Multi-day Event',
+    start: new Date(2015, 3, 19, 10, 0),
+    end: new Date(2015, 3, 22, 17, 0),
+    allDay: true,
+  },
+];
+
+export default function DashboardWeb() {
+  const [selectedDate, setSelectedDate] = useState(new Date(2015, 3, 1));
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const { defaultDate, max, views } = useMemo(
+    () => ({
+      defaultDate: new Date(2015, 3, 1),
+      max: moment(new Date(2015, 3, 30)).endOf('day').toDate(),
+      views: Object.keys(Views).map((k) => Views[k]),
+    }),
+    []
+  );
+  // Gestori di eventi
+  const handleSelectSlot = (slotInfo) => {
+    setSelectedDate(slotInfo.start);
+  };
+
+  const handleSelectEvent = (event) => {
+    console.log('Evento selezionato:', event);
+    // Qui potresti aprire un modale di dettaglio evento
+  };
+
+  // Dummy data per il pannello laterale
+  const departments = [
+    { id: 1, name: 'Amministrazione' },
+    { id: 2, name: 'Sviluppo' },
+    { id: 3, name: 'Marketing' },
+    { id: 4, name: 'Risorse Umane' },
+  ];
+
+  const employees = [
+    { id: 1, name: 'Mario Rossi', department: 1 },
+    { id: 2, name: 'Luca Bianchi', department: 2 },
+    { id: 3, name: 'Giulia Verdi', department: 3 },
+    { id: 4, name: 'Anna Neri', department: 1 },
+    { id: 5, name: 'Paolo Gialli', department: 4 },
+  ];
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', overflow: 'hidden' }}>      {/* Barra superiore */}
+      <div style={{ 
+        height: '40px', 
+        backgroundColor: '#33466b', 
+        color: 'white', 
+        display: 'flex', 
+        alignItems: 'center',
+        padding: '0 15px',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.12)'
+      }}>
+        <div 
+          onClick={() => setMenuOpen(!menuOpen)} 
+          style={{ cursor: 'pointer', fontSize: '18px', marginRight: '15px', display: 'flex', alignItems: 'center' }}
+        >
+          ☰
+        </div>
+        <h2 style={{ margin: 0, fontSize: '16px', fontWeight: 'normal' }}>TimbrApp - Dashboard</h2>
+      </div>
+
+      {/* Container principale */}
+      <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>        {/* Pannello sinistro - Reparti */}
+        <div style={{ 
+          width: '200px', 
+          backgroundColor: '#f8f8f8',
+          borderRight: '1px solid #e0e0e0',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'auto'
+        }}>
+          <div style={{ padding: '10px' }}>
+            <h3 style={{ 
+              margin: '0 0 10px 0', 
+              fontSize: '14px', 
+              color: '#444',
+              fontWeight: 'normal',
+              padding: '5px',
+              borderBottom: '1px solid #e0e0e0'
+            }}>
+              Reparti
+            </h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {departments.map(dept => (
+                <li 
+                  key={dept.id} 
+                  style={{ 
+                    padding: '8px 10px',
+                    marginBottom: '2px',
+                    backgroundColor: dept.id === 1 ? '#eef5fd' : 'white',
+                    borderLeft: dept.id === 1 ? '3px solid #2986cc' : 'none',
+                    cursor: 'pointer',
+                    fontSize: '13px'
+                  }}
+                >
+                  {dept.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Pannello centrale (calendario) */}
+        <div style={{ flex: 1, padding: '5px', overflow: 'hidden' }}>          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center', 
+            padding: '5px 0',
+            marginBottom: '5px'
+          }}>
+            <div style={{ display: 'flex' }}>
+              <button style={{
+                margin: '0 2px',
+                padding: '4px 10px',
+                background: '#fff',
+                border: '1px solid #ddd',
+                borderRadius: '3px',
+                cursor: 'pointer',
+                fontSize: '12px'
+              }}>Oggi</button>
+              <button style={{
+                margin: '0 2px',
+                padding: '4px 10px',
+                background: '#fff',
+                border: '1px solid #ddd',
+                borderRadius: '3px',
+                cursor: 'pointer',
+                fontSize: '12px'
+              }}>Indietro</button>
+              <button style={{
+                margin: '0 2px',
+                padding: '4px 10px',
+                background: '#fff',
+                border: '1px solid #ddd',
+                borderRadius: '3px',
+                cursor: 'pointer',
+                fontSize: '12px'
+              }}>Avanti</button>
+            </div>
+            <h3 style={{ 
+              margin: 0, 
+              fontWeight: 'normal',
+              fontSize: '15px',
+              color: '#444'
+            }}>aprile 2015</h3>
+            <div style={{ display: 'flex', height: '28px' }}>
+              <button style={{
+                margin: '0',
+                padding: '4px 10px',
+                background: '#eef0f5',
+                border: '1px solid #ddd',
+                borderRadius: '3px 0 0 3px',
+                cursor: 'pointer',
+                fontSize: '12px',
+                color: '#2986cc',
+                fontWeight: '500'
+              }}>Mese</button>
+              <button style={{
+                margin: '0',
+                padding: '4px 10px',
+                background: '#fff',
+                border: '1px solid #ddd',
+                borderLeft: 'none',
+                cursor: 'pointer',
+                fontSize: '12px'
+              }}>Settimana</button>
+              <button style={{
+                margin: '0',
+                padding: '4px 10px',
+                background: '#fff',
+                border: '1px solid #ddd',
+                borderLeft: 'none',
+                cursor: 'pointer',
+                fontSize: '12px'
+              }}>Lavorativa</button>
+              <button style={{
+                margin: '0',
+                padding: '4px 10px',
+                background: '#fff',
+                border: '1px solid #ddd',
+                borderLeft: 'none',
+                cursor: 'pointer',
+                fontSize: '12px'
+              }}>Giorno</button>
+              <button style={{
+                margin: '0',
+                padding: '4px 10px',
+                background: '#fff',
+                border: '1px solid #ddd',
+                borderLeft: 'none',
+                borderRadius: '0 3px 3px 0',
+                cursor: 'pointer',
+                fontSize: '12px'              }}>Agenda</button>
+            </div>
+          </div>
+          <div style={{ border: '1px solid #e0e0e0', height: 500, overflow: 'hidden', marginBottom: 0, boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }} className="calendar-container">
+            <Calendar
+              localizer={localizer}
+              events={events}
+              defaultDate={defaultDate}
+              max={max}
+              view="month"
+              views={["month", "week", "work_week", "day", "agenda"]}
+              showMultiDayTimes
+              step={60}
+              popup
+              selectable
+              onSelectSlot={handleSelectSlot}
+              onSelectEvent={handleSelectEvent}
+              style={{ height: 500 }}
+              startAccessor="start"
+              endAccessor="end"              // Colorazione delle celle
+              dayPropGetter={(date) => ({
+                style: {
+                  backgroundColor: date.getMonth() === new Date(defaultDate).getMonth() ? 'white' : '#f5f5f5',
+                }
+              })}
+              // Personalizzazione componenti
+              components={{
+                toolbar: () => null, // Nascondi toolbar predefinito poiché lo abbiamo personalizzato
+                event: (props) => (
+                  <div style={{
+                    color: 'white',
+                    padding: '0 5px',
+                    fontSize: '0.75rem',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                    height: '18px',
+                    lineHeight: '18px'
+                  }}>
+                    {props.title}
+                  </div>
+                ),
+                dateCellWrapper: CustomDateCell // Usa il componente personalizzato per le celle del giorno
+              }}
+              // Imposta layout eventi
+              dayLayoutAlgorithm="no-overlap"
+              // Settimana da lunedì a domenica
+              culture="it"
+              
+              messages={{
+                week: 'Settimana',
+                work_week: 'Lavorativa',
+                day: 'Giorno',
+                month: 'Mese',
+                previous: 'Indietro',
+                next: 'Avanti',
+                today: 'Oggi',
+                agenda: 'Agenda',
+                date: 'Data',
+                time: 'Ora',
+                event: 'Evento',
+                showMore: total => `+${total} altri`,
+              }}              formats={{
+                monthHeaderFormat: (date, culture, localizer) => localizer.format(date, 'MMMM YYYY', culture),
+                weekdayFormat: (date, culture, localizer) => localizer.format(date, 'ddd', culture).toLowerCase(),
+                dayFormat: (date, culture, localizer) => localizer.format(date, 'dd', culture),
+                dayHeaderFormat: (date, culture, localizer) => localizer.format(date, 'ddd', culture).toLowerCase(),
+              }}
+              // Inizio settimana da lunedì              weekStartsOn={1}
+              
+              // Attributi aggiuntivi per migliore visualizzazione
+              eventPropGetter={(event) => {
+                // Assegna classi diverse in base al titolo dell'evento
+                let className = '';                if (event.title.includes('Conference')) className = 'conference-event';
+                else if (event.title.includes('Meeting')) className = 'meeting-event';
+                else if (event.title.includes('Video')) className = 'video-event';
+                else if (event.title.includes('Planning')) className = 'planning-event';
+                else if (event.title.includes('Multi-day')) className = 'multi-day-event';
+                
+                return {
+                  className: className,
+                  style: {
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: 0,
+                  }
+                };
+              }}
+            />
+          </div>
+          
+          {/* Barra di stato sotto al calendario - stilizzata come nello screenshot */}
+          <div style={{ 
+            height: '34px', 
+            backgroundColor: '#ecf0f5', 
+            borderTop: '1px solid #dcdfe3',
+            borderBottom: '1px solid #dcdfe3',
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+            padding: '0 10px'
+          }}>
+            {/* Icone di navigazione pagine - come visto nello screenshot */}
+            <div style={{ display: 'flex', alignItems: 'center', fontSize: '13px' }}>
+              <span style={{ margin: '0 5px', color: '#888', cursor: 'pointer', fontWeight: 'bold' }}>«</span>
+              <span style={{ margin: '0 5px', color: '#444', cursor: 'pointer' }}>1</span>
+              <span style={{ margin: '0 5px', color: '#888', cursor: 'pointer', fontWeight: 'bold' }}>»</span>            </div>
+          </div>
+        </div>
+        
+        {/* Pannello destro - Dipendenti */}
+        <div style={{ 
+          width: '200px', 
+          backgroundColor: '#f8f8f8',
+          borderLeft: '1px solid #e0e0e0',
+          display: 'flex',
+          flexDirection: 'column',
+          overflow: 'auto'
+        }}>
+          <div style={{ padding: '10px' }}>
+            <h3 style={{ 
+              margin: '0 0 10px 0', 
+              fontSize: '14px', 
+              color: '#444',
+              fontWeight: 'normal',
+              padding: '5px',
+              borderBottom: '1px solid #e0e0e0',
+              display: 'flex',
+              justifyContent: 'space-between'
+            }}>
+              <span>Dipendenti</span> 
+              <span style={{ fontSize: '13px' }}>
+                {moment(selectedDate).format('DD/MM/YYYY')}
+              </span>
+            </h3>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {employees.map(emp => (
+                <li 
+                  key={emp.id} 
+                  style={{ 
+                    padding: '8px 10px',
+                    marginBottom: '2px',
+                    backgroundColor: 'white',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    fontSize: '13px',
+                    alignItems: 'center'
+                  }}
+                >
+                  <span>{emp.name}</span>
+                  <span style={{ 
+                    fontSize: '11px', 
+                    backgroundColor: emp.department === 1 ? '#e3f0f7' : 
+                                     emp.department === 2 ? '#e8f5e9' :
+                                     emp.department === 3 ? '#fef6e6' : '#f0f0f0', 
+                    padding: '2px 6px', 
+                    borderRadius: '10px',
+                    color: emp.department === 1 ? '#0277bd' : 
+                           emp.department === 2 ? '#2e7d32' :
+                           emp.department === 3 ? '#ef6c00' : '#555'
+                  }}>
+                    {departments.find(d => d.id === emp.department)?.name.substring(0, 3)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,9 @@
+/**
+ * FullCalendarCDN.css
+ * Importa gli stili di FullCalendar da CDN per evitare problemi con i percorsi dei moduli
+ */
+
+/* Importa gli stili da CDN */
+@import url('https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.17/main.min.css');
+@import url('https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.17/main.min.css');
+@import url('https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@6.1.17/main.min.css');

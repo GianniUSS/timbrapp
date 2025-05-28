@@ -1,0 +1,255 @@
+/* Container per il calendario */
+.calendar-container {
+  border: 1px solid #ddd;
+  overflow: hidden;
+  background-color: white;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important; /* Essenziale per il layout flex */
+  height: 100% !important; /* Occupa tutto lo spazio disponibile */
+  position: relative !important; /* Per il posizionamento assoluto della toolbar */
+}
+
+/* Fix per l'altezza delle righe della vista mese */
+.calendar-container .rbc-month-view .rbc-month-row {
+  height: 150px !important;
+  min-height: 150px !important;
+  max-height: 150px !important;
+  flex: 1 0 auto !important;
+  overflow: visible !important;
+}
+
+/* Aggiungiamo stili al contenitore della vista mese per utilizzare tutto lo spazio disponibile */
+.calendar-container .rbc-month-view {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+/* Fissaggio delle dimensioni delle celle */  
+.calendar-container .rbc-month-view .rbc-date-cell {
+  height: 80px !important;
+  padding: 3px 5px 0 0 !important;
+  text-align: right !important;
+}
+
+/* Colori intestazioni giorni della settimana */
+.calendar-container .rbc-header {
+  background-color: #f8f8f8;
+  padding: 8px 3px !important;
+  text-transform: lowercase !important;
+  font-weight: normal !important;
+  font-size: 0.85rem !important;
+  height: 30px !important;
+  line-height: 30px !important;
+}
+
+/* Miglioramento visualizzazione eventi */
+.calendar-container .rbc-event {
+  min-height: 18px !important;
+  max-height: 18px !important;
+  line-height: 18px !important;
+  padding: 0 5px !important;
+  margin: 1px 0 !important;
+  border-radius: 0 !important;
+  font-size: 0.8rem !important;
+}
+
+/* Visualizzazione "più eventi" */
+.calendar-container .rbc-row-segment .rbc-show-more {
+  background-color: transparent !important;
+  margin: 2px 5px !important;
+  color: #1976d2 !important;
+  font-size: 0.75rem !important;
+  height: 18px !important;
+  line-height: 18px !important;
+}
+
+/* Visualizzazione numeri giorno */
+.calendar-container .rbc-date-cell {
+  font-size: 0.85rem !important;
+  color: #333 !important;
+}
+
+/* Giorni fuori dal mese corrente */
+.calendar-container .rbc-off-range-bg {
+  background-color: #f5f5f5 !important;
+}
+
+/* Barra di stato sotto il calendario */
+.calendar-status-bar {
+  background-color: #ecf0f5;
+  border-top: 1px solid #dcdfe3;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #444;
+  height: 34px;
+  border-bottom: 1px solid #dcdfe3;
+  font-weight: normal;
+}
+
+/* Bottone per aggiungere evento */
+.add-event-btn {
+  background-color: #2986cc;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.add-event-btn:hover {
+  background-color: #1976d2;
+}
+
+.add-event-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  color: #2986cc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Eventi multi giorno */
+.calendar-container .rbc-event.rbc-event-continues-prior {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.calendar-container .rbc-event.rbc-event-continues-after {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* Stile intestazione oggi */
+.calendar-container .rbc-today {
+  background-color: #e6f2ff !important;
+}
+
+/* Stile per numeri giorni del mese */
+.calendar-container .rbc-date-cell {
+  position: relative;
+}
+
+/* Stile per il numero di oggi con cerchio */
+.calendar-container .rbc-date-cell.rbc-now {
+  position: relative;
+}
+
+.calendar-container .rbc-date-cell.rbc-now .rbc-button-link {
+  background-color: #2986cc !important;
+  color: white !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-weight: normal !important;
+}
+
+/* Stile custom per il popup degli eventi */
+.rbc-overlay {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+  border-radius: 4px !important;
+}
+
+.rbc-overlay-header {
+  padding: 8px !important;
+  font-weight: 500 !important;
+}
+
+/* Stile per i bordi del calendario */
+.calendar-container {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* Stile per la toolbar inferiore che deve essere visibile come nello screenshot */
+.bottom-calendar-toolbar {
+  margin-top: -1px;
+  background-color: #eef1f5;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  color: #444;
+  font-size: 0.85rem;
+}
+
+/* Stile per la toolbar che deve essere ancorata in fondo */
+.calendar-toolbar {
+  height: 50px !important;
+  background-color: #f8f8f8 !important;
+  border-top: 1px solid #dcdfe3 !important;
+  border-bottom: none !important; /* Rimuoviamo il bordo inferiore */
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0 15px !important;
+  margin-top: auto !important; /* Forza la toolbar a stare in fondo */
+  margin-bottom: 0 !important; /* Nessun margine sul fondo */
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  position: sticky !important;
+  bottom: 0 !important; /* Assicura che la toolbar rimanga visibile in fondo */
+  left: 0 !important;
+  z-index: 10 !important; /* Garantisce che sia sopra altri elementi */
+}
+
+/* Indicatore colorato per gli eventi nella barra inferiore */
+.event-color-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: #2986cc;
+  margin-right: 6px;
+  border-radius: 2px;
+}
+
+/* Stile per i numeri di pagina nella barra inferiore */
+.pagination-info {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+/* Modifico la barra di stato per essere più simile allo screenshot */
+.calendar-status-bar {
+  background-color: #eef1f5 !important;
+  height: 36px !important;
+  margin-top: -1px !important;
+}
+
+/* Stile per il contenitore del calendario stesso */
+.calendar-container .rbc-calendar {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+/* Forzare l'overflow nascosto sui contenitori per evitare barre di scorrimento non necessarie */
+.calendar-container div[style] {
+  overflow: visible !important;
+}

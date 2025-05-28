@@ -1,0 +1,26 @@
+Rimuovere i seguenti file inutilizzati:
+- src/utils/SundayColumnFix.js
+- src/styles/SundayColumnFix.css
+- src/styles/calendar-custom.css
+- src/styles/calendar-additional.css
+- src/styles/calendar-improvements.css
+- src/styles/day-cell.css
+
+
+````
+
+````
+
+Sono state apportate modifiche.
+
+Ho aggiornato index-http.js per utilizzare la porta 4000 (o quella specificata in `PORT`) anziché 3001, evitando conflitti col dev-server React. Adesso:
+
+- Per lo sviluppo React con hot-reload:  
+  `cd timbrapp-frontend && npm start` → http://localhost:3001  
+
+- Per testare via index-http.js o index.js (backend serve SPA buildata):  
+  1. `npm run build` in timbrapp-frontend  
+  2. Avvia index-http.js (`node timbrapp-backend/index-http.js`)  
+  3. Apri http://localhost:4000  
+
+Prova ora con http://localhost:3001 per React o http://localhost:4000 per il server HTTP e dimmi se funziona.

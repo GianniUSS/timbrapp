@@ -1,0 +1,39 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    
+
+    // ── DEBUG BACKEND NODE.JS ───────────────────────────────
+    {
+      "name": "Debug Backend (Node)",
+      "type": "node", // usa "node" (non più "pwa-node")
+      "request": "launch",
+      "program": "${workspaceFolder}/timbrapp-backend/index.js",
+      "cwd": "${workspaceFolder}/timbrapp-backend",
+      "console": "integratedTerminal",
+      "restart": true, // riavvia se crasha
+      "env": {
+        "VSCODE_JSON_NOSCHEMA": "1" // Disabilita la validazione degli schemi JSON
+      }
+    },
+    // ── DEBUG FRONTEND REACT ────────────────────────────────
+    {
+      "name": "Debug Frontend (Chrome HTTPS)",
+      "type": "chrome", // usa il debugger integrato
+      "request": "launch",
+      "url": "https://localhost:4000", // HTTPS, non http
+      "webRoot": "${workspaceFolder}/timbrapp-frontend/src",
+      "runtimeArgs": [
+        "--allow-insecure-localhost", // accetta certificati self-signed
+        "--disable-extensions", // opzionale: niente estensioni che interferiscono
+        "--disable-json-schema-validation" // disabilita validazione schema JSON
+      ],
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/*"
+      },
+      "env": {
+        "VSCODE_JSON_NOSCHEMA": "1" // Disabilita la validazione degli schemi JSON
+      }
+    }
+  ]
+}

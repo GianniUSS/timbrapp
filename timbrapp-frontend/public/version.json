@@ -1,0 +1,116 @@
+{
+  "version": "1.5.4",
+  "buildDate": "2025-05-17T16:45:00.000Z",
+  "environment": "production",
+  "features": {
+    "offlineMode": true,
+    "serviceWorker": true,
+    "caching": true,
+    "optimizedRendering": true,
+    "virtualizedLists": true,
+    "calendarFixes": true,
+    "realDatabaseData": true,
+    "treeviewFixes": true
+  },
+  "apis": {
+    "commesse": "/api/commesse",
+    "tasks": "/api/commesse/{id}/tasks"
+  },
+  "requiredBrowserFeatures": {
+    "serviceWorker": true,
+    "indexedDB": true,
+    "webStorage": true,
+    "pushNotifications": false
+  },  "cachingStrategy": {
+    "commesse": "stale-while-revalidate",
+    "tasks": "stale-while-revalidate",
+    "static": "cache-first"
+  },  "lastUpdated": "2025-05-17T16:45:00.000Z",  "changelogs": [
+    {
+      "version": "1.5.2",
+      "date": "2025-05-17",
+      "changes": [
+        "Risolto problema della treeview che non mostrava location e task",
+        "Implementato caricamento dati corretto per locations e tasks",
+        "Aggiunta location predefinita per commesse senza locations",
+        "Migliorata la visualizzazione gerarchica nella treeview",
+        "Ottimizzato recupero dati dalle API disponibili"
+      ]
+    },
+    {
+      "version": "1.5.1",
+      "date": "2025-05-17",
+      "changes": [
+        "Rimossi dati mock dalle commesse",
+        "Implementata visualizzazione di dati reali dal database",
+        "Migliorata struttura ad albero con commesse/location/task",
+        "Ottimizzata generazione eventi calendario da dati reali",
+        "Migliorata gestione degli errori di caricamento dati"
+      ]
+    },
+    {
+      "version": "1.4.6",
+      "date": "2025-05-16",
+      "changes": [
+        "Implementata soluzione definitiva per problemi di visualizzazione calendario",
+        "Aggiunto pulsante 'Forza Rendering' per refresh manuale",
+        "Creato script di auto-riparazione calendario a livello DOM",
+        "Migliorato indicatore di stato visibilità calendario"
+      ]
+    },
+    {
+      "version": "1.4.5",
+      "date": "2025-05-16",
+      "changes": [
+        "Risolto problema di visibilità del calendario",
+        "Migliorata gestione delle date nei turni",
+        "Aggiunto preloader per garantire la corretta visualizzazione",
+        "Corretti errori di console relativi alle date invalide"
+      ]
+    },
+    {
+      "version": "1.4.3",
+      "date": "2025-05-16",
+      "changes": [
+        "Risolti problemi di layout del calendario",
+        "Migliorata visualizzazione responsive",
+        "Eliminate scrollbar orizzontali non necessarie"
+      ]
+    },
+    {
+      "version": "1.3.1",
+      "date": "2025-05-15",
+      "changes": [
+        "Aggiornamento versione a 1.3.1"
+      ]
+    },
+    {
+      "version": "1.3.0",
+      "date": "2025-05-14",
+      "changes": [
+        "Ottimizzato Service Worker con gestione migliorata degli eventi",
+        "Aggiunti nuovi campi ai task (durata prevista, numero risorse, skills)",
+        "Implementato nuovo componente ShiftPlanner per la gestione dei turni",
+        "Migliorata visualizzazione delle commesse e task con nuove icone",
+        "Aggiunta sezione per la pianificazione delle risorse"
+      ]
+    },
+    {
+      "version": "1.2.5",
+      "date": "2025-05-14",
+      "changes": [
+        "Ottimizzato rendering delle liste con virtualizzazione",
+        "Migliorata gestione offline",
+        "Aggiunto monitoraggio avanzato dello stato dell'applicazione"
+      ]
+    },
+    {
+      "version": "1.2.5",
+      "date": "2025-05-01",
+      "changes": [
+        "Aggiunto supporto per Service Worker",
+        "Migliorata gestione delle notifiche"
+      ]
+    }
+  ]
+}

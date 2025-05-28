@@ -1,0 +1,152 @@
+/* 
+ * CalendarFixStyles.css - Soluzione definitiva per problemi di visibilità di react-big-calendar
+ * Questo file contiene hack CSS estremi per garantire la visibilità del calendario
+ * anche quando l'inspector/console del browser non è aperto
+ */
+
+/* 
+ * FIX #1: Assicura che il calendario e i suoi componenti siano sempre visibili
+ * Questo sovrascritte le proprietà che potrebbero nasconderlo
+ */
+.rbc-calendar,
+.react-big-calendar-container,
+.rbc-month-view,
+.rbc-time-view,
+.rbc-agenda-view {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  min-height: 600px !important;
+  height: 700px !important;
+  width: 100% !important;
+  z-index: 999 !important;
+}
+
+/* 
+ * FIX #2: Forza la visualizzazione dei componenti interni del calendario
+ */
+.rbc-toolbar,
+.rbc-header,
+.rbc-month-header,
+.rbc-time-header,
+.rbc-day-bg,
+.rbc-month-row,
+.rbc-row-content,
+.rbc-row-bg,
+.rbc-row,
+.rbc-event,
+.rbc-events-container,
+.rbc-date-cell {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* 
+ * FIX #3: Applichiamo un trucco per forzare la creazione di un nuovo stacking context
+ * Questo è ciò che la console di sviluppo fa implicitamente quando è aperta
+ */
+.calendar-container::before,
+.react-big-calendar-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  z-index: -1;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* 
+ * FIX #4: Forza l'hardware acceleration su tutto il calendario
+ * Questo simula ciò che accade quando la console sviluppatore è aperta
+ */
+.calendar-container,
+.react-big-calendar-container,
+.rbc-calendar {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/*
+ * FIX #5: Fissa le altezze e impedisce che vengano collassate
+ */
+.calendar-container {
+  min-height: 600px !important;
+  height: 700px !important;
+  overflow: visible !important;
+  display: block !important;
+}
+
+/*
+ * FIX #6: Fix per flexbox nelle righe del calendario
+ */
+.rbc-month-row {
+  display: flex !important;
+  flex-direction: row !important;
+  flex: 1 0 auto !important;
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+.rbc-day-bg {
+  flex: 1 0 0% !important;
+}
+
+.rbc-date-cell {
+  flex: 1 0 0% !important;
+  min-width: 0 !important;
+  padding-right: 5px !important;
+  text-align: right !important;
+}
+
+/*
+ * FIX #7: Assicura che il rendering avvenga completamente anche con pochi eventi
+ */
+.rbc-calendar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: transparent;
+  pointer-events: none;
+  min-height: 700px;
+}
+
+/* 
+ * FIX #8: Forza un display table sulle celle che potrebbero essere nascoste
+ */
+.rbc-header {
+  display: table-cell !important;
+}
+
+/*
+ * FIX #9: Evita collasso delle altezze nel caso di viewport piccoli
+ */
+@media screen and (max-height: 800px) {
+  .calendar-container,
+  .react-big-calendar-container,
+  .rbc-calendar {
+    min-height: 500px !important;
+    height: 500px !important;
+  }
+}
+
+/*
+ * FIX #10: Forza l'attivazione dell'hardware acceleration (F12 fa questo)
+ */
+body .MuiBox-root:has(.calendar-container),
+body .MuiPaper-root:has(.calendar-container) {
+  transform: translateZ(0);
+  will-change: transform;
+  z-index: auto !important;
+  overflow: visible !important;
+}

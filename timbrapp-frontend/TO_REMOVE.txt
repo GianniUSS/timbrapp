@@ -1,0 +1,2 @@
+Rimuovere i seguenti file inutilizzati:
+- Tutti i file fix calendario e CSS legacy non più usati

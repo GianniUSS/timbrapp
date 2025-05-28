@@ -1,0 +1,103 @@
+{
+  "short_name": "TimbrApp",
+  "name": "TimbrApp - Gestione Presenze",
+  "description": "Applicazione per la gestione delle timbrature e presenze aziendali",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#1976d2",
+  "background_color": "#ffffff",
+  "gcm_sender_id": "103953800507",
+  "prefer_related_applications": false,
+  "icons": [
+    { "src":"icon-16.png", "sizes":"16x16", "type":"image/png" },
+  { "src":"icon-24.png", "sizes":"24x24", "type":"image/png" },
+  { "src":"icon-32.png", "sizes":"32x32", "type":"image/png" },
+  { "src":"icon-64.png", "sizes":"64x64", "type":"image/png" },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "maskable_icon192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "maskable_icon512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot-mobile.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshot-desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Timbra Entrata",
+      "short_name": "Entrata",
+      "description": "Registra una timbratura di entrata",
+      "url": "/?action=timbra-entrata",
+      "icons": [{ "src": "shortcut-entrata.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Timbra Uscita",
+      "short_name": "Uscita",
+      "description": "Registra una timbratura di uscita",
+      "url": "/?action=timbra-uscita",
+      "icons": [{ "src": "shortcut-uscita.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Visualizza Timbrature",
+      "short_name": "Storico",
+      "description": "Visualizza lo storico delle timbrature",
+      "url": "/?view=timbrature",
+      "icons": [{ "src": "shortcut-storico.png", "sizes": "96x96" }]
+    }
+  ],
+"share_target": {
+  "action": "/share-target",
+  "method": "POST",
+  "enctype": "multipart/form-data",
+  "params": {
+    "title": "title",
+    "text": "text",
+    "url": "url",
+    "files": [
+      {
+        "name": "file",
+        "accept": ["image/*", "application/pdf"]
+      }
+    ]
+  }
+},
+
+
+
+
+
+
+  "categories": ["productivity", "business"]
+}
